@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from pprint import pprint
 
 from .models import *
 from .forms import *
@@ -7,9 +8,14 @@ from .forms import *
 
 def index(request):
     if request.method == 'POST':
-        shin_ryugi_mei = request.POST.get('shin_ryugi_mei')
-        if 0 < len(shin_ryugi_mei) < 20:
-            Ryugi.objects.create(na=shin_ryugi_mei, kotodute='')
+        if request.POST.get('act') == 'soushi':
+            shin_ryugi_mei = request.POST.get('shin_ryugi_mei')
+            if 0 < len(shin_ryugi_mei) < 20:
+                Ryugi.objects.create(na=shin_ryugi_mei, kotodute='')
+        elif request.POST.get('act') == 'shitsuden':
+            checked_ryugi_lst = request.POST.getlist('checked_ryugis')
+            for checked_ryugi in checked_ryugi_lst:
+                Ryugi.objects.filter(na=checked_ryugi).delete()
 
     context = {
         'ryugi_lst': Ryugi.objects.all(),
