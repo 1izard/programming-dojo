@@ -8,7 +8,7 @@
     <h1>Welcome to Izanami Jinja...!</h1>
     <div class="row">
         <div class="col">
-            
+
         </div>
         <div class="col-4">
             <form class="card p-2" method="post" action="{% url 'izanamijinja:index' %}">
@@ -16,30 +16,43 @@
                 <div class="input-group">
                     <input type="text" name="shin_ryugi_mei" class="form-control" placeholder="Ryugi">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-success">Soushi</button>
+                        <button type="submit" class="btn btn-success" name="act" value="soushi">Soushi</button>
                     </div>
                 </div>
             </form>
-            <div class="nav flex-column nav-pills bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                {% for ryugi in ryugi_lst %}
-                <a class="nav-link" id="v-pills-'{{ ryugi }}'-tab" data-toggle="pill" href="#v-pills-'{{ ryugi }}'" role="tab" aria-controls="v-pills-'{{ ryugi }}'" aria-selected="false">{{ ryugi }}</a>
-                {% empty %}
-                <a class="nav-link disabled" id="v-pills-empty-tab" data-toggle="pill" href="#v-pills-empty" role="tab" aria-controls="v-pills-empty" aria-selected="false">No Ryugi</a>
-                {% endfor %}
-                <!-- <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">Home</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                <a class="nav-link" id="v-pills-message-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a> -->
-            </div>
-            <div class="tab-content" id="v-pills-tabContent">
-                {% for ryugi in ryugi_lst %}
-                <div class="tab-pane fade" id="v-pills-'{{ ryugi }}'" role="tabpanel" aria-labelledby="v-pills-'{{ ryugi }}'-tab"></div>
-                {% empty %}
-                <div class="tab-pane fade" id="v-pills-empty" role="tabpanel" aria-labelledby="v-pills-empty-tab"></div>
-                {% endfor %}
-                <!-- <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"></div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"></div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><div> -->
-            </div>
+            <form method="post" action="{% url 'izanamijinja:index' %}">
+                {% csrf_token %}
+                <div class="nav flex-column nav-pills bg-light" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    {% for ryugi in ryugi_lst %}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" name="checked_ryugis" value="{{ ryugi }}">
+                            </div>
+                            <a class="nav-link" id="v-pills-'{{ ryugi }}'-tab" data-toggle="pill"
+                                href="#v-pills-'{{ ryugi }}'" role="tab" aria-controls="v-pills-'{{ ryugi }}'"
+                                aria-selected="false">{{ ryugi }}</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <a class="nav-link disabled" id="v-pills-empty-tab" data-toggle="pill" href="#v-pills-empty"
+                        role="tab" aria-controls="v-pills-empty" aria-selected="false">No Ryugi</a>
+                    {% endfor %}
+                </div>
+                <div class="tab-content" id="v-pills-tabContent">
+                    {% for ryugi in ryugi_lst %}
+                    <div class="tab-pane fade" id="v-pills-'{{ ryugi }}'" role="tabpanel"
+                        aria-labelledby="v-pills-'{{ ryugi }}'-tab"></div>
+                    {% empty %}
+                    <div class="tab-pane fade" id="v-pills-empty" role="tabpanel" aria-labelledby="v-pills-empty-tab">
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="d-flex flex-row-reverse">
+                    <button type="submit" class="btn btn-danger" name="act" value="shitsuden">Shitsuden</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
