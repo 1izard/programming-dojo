@@ -1,4 +1,4 @@
-{% extends 'mugenjigoku/base.html' %}
+{% extends 'izanamijinja/base.html' %}
 
 {% load static %}
 {% load crispy_forms_tags %}
@@ -6,27 +6,27 @@
 {% block content %}
 <h1>
     {% if object %}
-    Hengi
+    Aratame
     {% else %}
-    Shingi
+    Seikei
     {% endif %}
 </h1>
 <form method="post">
     {% csrf_token %}
     <div class="row">
         <div class="col-4">
-        {{ form.wazamoku|as_crispy_field }}
+        {{ form.ryugi|as_crispy_field }}
         </div>
     </div>
-    {{ form.toi|as_crispy_field }}
-    {{ form.kai1|as_crispy_field }}
-    {{ form.kai2|as_crispy_field }}
-    {{ form.kai3|as_crispy_field }}
+    {{ form.kataki|as_crispy_field }}
+    {{ form.waza1|as_crispy_field }}
+    {{ form.waza2|as_crispy_field }}
+    {{ form.waza3|as_crispy_field }}
     <button type="submit" class="btn btn-success">
     {% if object %}
-    Hengi
+    Aratame
     {% else %}
-    Shingi
+    Seikei
     {% endif %}
     </button>
 </form>
