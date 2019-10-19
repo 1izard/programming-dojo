@@ -8,7 +8,7 @@ class Wazamoku(models.Model):
         return self.name
 
 
-class Waza(modesl.Model):
+class Waza(models.Model):
     wazamoku = models.ForeignKey(Wazamoku, on_delete=models.CASCADE)
     toi = models.TextField()
     kai1 = models.CharField(max_length=40)
