@@ -3,6 +3,8 @@
 {% load static %}
 
 {% block content %}
+{{ shiren_dct|json_script:"shiren_obj" }}
 <h1>Shiren</h1>
 <a href="{% url 'izanamijinja:zanshin' %}" class="btn btn-success" role="button">Zanshin</a>
+<script src="{% static 'izanamijinja/js/shiren.js' %}"></script>
 {% endblock %}

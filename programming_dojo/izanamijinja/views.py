@@ -81,11 +81,20 @@ def shiren(request):
     random.shuffle(tekishu)
     tekishu = tekishu[:min(len(tekishu), tekikazu)]
 
+    print('tekishu', tekishu)
     print('#' * 30)
 
     context = {
-        'tekishu_dct': {
-            'tekishu': ['tekishu']
+        'shiren_dct': {
+            'tekishu': [{
+                'ryugi_id': kata.ryugi.id,
+                'ryugi_na': kata.ryugi.na,
+                'kataki': kata.kataki,
+                'waza1': kata.waza1,
+                'waza2': kata.waza2,
+                'waza3': kata.waza3,
+                'rendo': kata.rendo,
+            } for kata in tekishu]
         }
     }
     return render(request, 'izanamijinja/shiren.html', context)
