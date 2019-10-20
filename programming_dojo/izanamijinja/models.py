@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class Ryugi(models.Model):
-    na = models.CharField(max_length=20)
+    na = models.CharField(max_length=20, unique=True)
     kotodute = models.CharField(max_length=40, blank=True)
 
     def __str__(self):
