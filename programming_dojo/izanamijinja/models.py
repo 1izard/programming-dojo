@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Ryugi(models.Model):
@@ -10,7 +11,7 @@ class Ryugi(models.Model):
 
 
 class Kata(models.Model):
-    ryugi = models.ForeignKey(Ryugi, on_delete=models.CASCADE)
+    ryugi = models.ForeignKey(Ryugi, related_name='katas', on_delete=models.CASCADE)
     kataki = models.TextField()
     waza1 = models.CharField(max_length=40)
     waza2 = models.CharField(max_length=40, blank=True)
@@ -23,3 +24,6 @@ class Kata(models.Model):
 
     def __str__(self):
         return self.kataki
+    
+    def get_absolute_url(self):
+        return reverse('izanamijinja:index')
