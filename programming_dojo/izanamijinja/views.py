@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from pprint import pprint
 import json
+import random
 
 from .models import *
 from .forms import *
@@ -58,12 +59,35 @@ class KataAratameView(generic.UpdateView):
 
 
 def zenshin(request):
-    context = {}
+    context = {
+        'ryugi_lst': Ryugi.objects.all()
+    }
     return render(request, 'izanamijinja/zenshin.html', context)
 
 
 def shiren(request):
-    context = {}
+    print('#' * 30)
+
+    ryugi_id = int(request.POST.get('ryugi_id'))
+    tekikazu = int(request.POST.get('tekikazu'))
+    
+    print('ryugi_id:', ryugi_id)
+    print('tekikazu:', tekikazu)
+
+    if ryugi_id == -1:
+        tekishu = list(Kata.objects.all())
+    else:
+        tekishu = list(Ryugi.objects.get(pk=ryugi_id).katas.all())
+    random.shuffle(tekishu)
+    tekishu = tekishu[:min(len(tekishu), tekikazu)]
+
+    print('#' * 30)
+
+    context = {
+        'tekishu_dct': {
+            'tekishu': ['tekishu']
+        }
+    }
     return render(request, 'izanamijinja/shiren.html', context)
 
 
