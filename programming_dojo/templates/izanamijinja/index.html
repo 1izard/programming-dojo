@@ -6,6 +6,19 @@
 {% block content %}
 <div class="container">
     <h1>Welcome to Izanami Jinja...!</h1>
+    {{ ryugi_dct|json_script:"ryugi_obj" }}
+    {{ katas_dct|json_script:"katas_obj" }}
+    <div id="app">
+        <ul>
+            <li v-for="person in people">
+                <a v-bind:href="person.url">[[ person.name ]]</a>
+                <button v-on:click="greet(person.name)">hey</button>
+            </li>
+        </ul>
+    </div>
+    <div id="example-1">
+        <button v-on:click="update">Update</button>
+    </div>
     <div class="row">
         <div class="col">
 
@@ -19,6 +32,7 @@
                         <button type="submit" class="btn btn-success" name="act" value="soushi">Soushi</button>
                     </div>
                 </div>
+            </form>
             </form>
             <form method="post" action="{% url 'izanamijinja:index' %}">
                 {% csrf_token %}
@@ -39,15 +53,16 @@
                     <a class="nav-link disabled" id="v-pills-empty-tab" data-toggle="pill" href="#v-pills-empty"
                         role="tab" aria-controls="v-pills-empty" aria-selected="false">No Ryugi</a>
                     {% endfor %}
-                </div>
-                <div class="tab-content" id="v-pills-tabContent">
-                    {% for ryugi in ryugi_lst %}
-                    <div class="tab-pane fade" id="v-pills-'{{ ryugi }}'" role="tabpanel"
-                        aria-labelledby="v-pills-'{{ ryugi }}'-tab"></div>
-                    {% empty %}
-                    <div class="tab-pane fade" id="v-pills-empty" role="tabpanel" aria-labelledby="v-pills-empty-tab">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        {% for ryugi in ryugi_lst %}
+                        <div class="tab-pane fade" id="v-pills-'{{ ryugi }}'" role="tabpanel"
+                            aria-labelledby="v-pills-'{{ ryugi }}'-tab"></div>
+                        {% empty %}
+                        <div class="tab-pane fade" id="v-pills-empty" role="tabpanel"
+                            aria-labelledby="v-pills-empty-tab">
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
                 <div class="d-flex flex-row-reverse">
                     <button type="submit" class="btn btn-danger" name="act" value="shitsuden">Shitsuden</button>
@@ -56,4 +71,5 @@
         </div>
     </div>
 </div>
+<script src="{% static 'izanamijinja/js/index.js' %}"></script>
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from pprint import pprint
+import json
 
 from .models import *
 from .forms import *
@@ -17,8 +18,32 @@ def index(request):
             for checked_ryugi in checked_ryugi_lst:
                 Ryugi.objects.filter(na=checked_ryugi).delete()
 
+    ryugi_lst = list(Ryugi.objects.all())
+    
+    ryugi_lst = [{
+        'id': ryugi.id,
+        'kotodute': ryugi.kotodute,
+        'na': ryugi.na,
+    } for ryugi in ryugi_lst]
+
+    kata_lst = list(Kata.objects.all())
+    kata_lst = [{
+        'id': kata.id,
+        'kataki': kata.kataki,
+        'rendo': kata.rendo,
+        'ryugi_id': kata.ryugi_id,
+        'waza1': kata.waza1,
+        'waza2': kata.waza2,
+        'waza3': kata.waza3
+    } for kata in kata_lst]
+
     context = {
-        'ryugi_lst': Ryugi.objects.all(),
+        'ryugi_dct': {
+            'ryugi_lst': ryugi_lst,
+        },
+        'katas_dct': {
+            'kata_lst': kata_lst,
+        },
     }
     return render(request, 'izanamijinja/index.html', context)
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Ryugi(models.Model):
@@ -23,3 +24,6 @@ class Kata(models.Model):
 
     def __str__(self):
         return self.kataki
+    
+    def get_absolute_url(self):
+        return reverse('izanamijinja:seikei')
