@@ -4,7 +4,43 @@
 
 {% block content %}
 {{ shiren_dct|json_script:"shiren_obj" }}
-<h1>Shiren</h1>
-<a href="{% url 'izanamijinja:zanshin' %}" class="btn btn-success" role="button">Zanshin</a>
+<div id="shirenform">
+<h1>Shiren ([[ vkazu ]]/[[ vtekikazu ]])</h1>
+    <div class="row">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header">
+                    [[ vkata.ryugi_na ]]
+                </div>
+                <div class="card-body">
+                    <h5>[[ vkata.kataki ]]</h5>
+                    <p><i>Rendo: [[ vkata.rendo ]]</i></p>
+                    <div class="input-group" style="margin-bottom: 10px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="waza1-addon">Waza1</span>
+                        </div>
+                        <input v-model="zan1" type="text" class="form-control" placeholder="waza1" aria-label="Waza1"
+                            aria-describedby="waza1-addon">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 10px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="waza2-addon">Waza2</span>
+                        </div>
+                        <input v-model="zan2" type="text" class="form-control" placeholder="waza2" aria-label="Waza2"
+                            aria-describedby="waza2-addon">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="waza3-addon">Waza3</span>
+                        </div>
+                        <input v-model="zan3" type="text" class="form-control" placeholder="waza3" aria-label="Waza3"
+                            aria-describedby="waza3-addon">
+                    </div>
+                    <button v-on:click="zan()" v-bind:class="zanbtnclass" type="button">[[ zanbtnlabel ]]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="{% static 'izanamijinja/js/shiren.js' %}"></script>
 {% endblock %}

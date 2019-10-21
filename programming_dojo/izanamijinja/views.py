@@ -94,6 +94,7 @@ def shiren(request):
                 'waza2': kata.waza2,
                 'waza3': kata.waza3,
                 'rendo': kata.rendo,
+                'seikou': False,
             } for kata in tekishu]
         }
     }
