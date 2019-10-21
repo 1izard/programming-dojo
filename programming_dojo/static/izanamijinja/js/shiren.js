@@ -29,6 +29,9 @@ new Vue({
         }
     },
     methods: {
+        isBlank: function(str) {
+            return str.length > 0;
+        },
         zan: function() {
             if (this.kazu >= this.tekikazu - 1) {
                 console.log('Zanshin');
