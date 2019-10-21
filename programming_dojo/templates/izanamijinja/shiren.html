@@ -9,7 +9,7 @@
 </script>
 <div id="shiren">
     <div v-show="showshirengroup">
-        <h1>Shiren ([[ kazu + 1 ]]/[[ tekikazu ]])</h1>
+        <h1>Shiren ([[ kazu + 1 ]] / [[ tekikazu ]])</h1>
         <div class="row">
             <div class="col-7">
                 <div class="card">
@@ -51,7 +51,7 @@
             <div class="row">
             <div class="col-7">
                 <div v-for="(kata, index) in tekishu">
-                    <div class="card" style="margin:5px">
+                    <div class="card" :style="zanshincardstyle(kata.shippai_lst)">
                         <div class="card-header">
                             [[ kata.ryugi_na ]] ([[ index + 1 ]] / [[ tekikazu ]])
                         </div>

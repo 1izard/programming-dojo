@@ -33,7 +33,7 @@ new Vue({
             set: function(newclassname) {
                 this.zanbtnclassname = newclassname;
             }
-        }
+        },
     },
     methods: {
         isBlank: function(str) {
@@ -46,23 +46,14 @@ new Vue({
             if (migaki > 0) return '(+1)';
             return '';
         },
+        zanshincardstyle: function(shippai_lst) {
+            console.log('### zanshincardstyle ###');
+            console.log('zanshincardstyle.shippai_lst', shippai_lst);
+            let common_str = 'margin:5px; '
+            if (shippai_lst.length > 0) return common_str + 'background-color:#ffc2e5;';
+            return common_str +'background-color:#b9dca4;'
+        },
         zan: function() {
-            if (this.kazu >= this.tekikazu - 1) {
-                console.log('Zanshin');
-                console.log('tekishu', this.tekishu);
-
-                axios.post(zanshin_url, {
-                    'tekishu': this.tekishu,
-                })
-                .then(function(response) {
-                    console.log('response', response);
-                })
-                .then(function(error) {
-                    console.log('error', error);
-                });
-                this.showshirengroup = false;
-                return;
-            }
             let zan_lst = [this.zan1.trim(), this.zan2.trim(), this.zan3.trim()];
             let waza_lst = [this.kata.waza1.trim(), this.kata.waza2.trim(), this.kata.waza3.trim()];
             console.log('zan_lst:', zan_lst);
@@ -78,6 +69,22 @@ new Vue({
                 this.kata.migaki = shin_rendo - this.kata.rendo;
                 this.kata.rendo = shin_rendo;
                 ++this.seikousu;
+            }
+            if (this.kazu >= this.tekikazu - 1) {
+                console.log('Zanshin');
+                console.log('tekishu', this.tekishu);
+
+                axios.post(zanshin_url, {
+                    'tekishu': this.tekishu,
+                })
+                .then(function(response) {
+                    console.log('response', response);
+                })
+                .then(function(error) {
+                    console.log('error', error);
+                });
+                this.showshirengroup = false;
+                return;
             }
             if (this.kazu >= this.tekikazu - 2) {
                 this.zanbtnlabel = 'Zanshin';
