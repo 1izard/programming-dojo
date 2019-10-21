@@ -6,16 +6,16 @@
 {{ shiren_dct|json_script:"shiren_obj" }}
 <div id="shiren">
     <div v-show="showshirengroup">
-        <h1>Shiren ([[ vkazu ]]/[[ vtekikazu ]])</h1>
+        <h1>Shiren ([[ kazu + 1 ]]/[[ tekikazu ]])</h1>
         <div class="row">
             <div class="col-7">
                 <div class="card">
                     <div class="card-header">
-                        [[ vkata.ryugi_na ]]
+                        [[ kata.ryugi_na ]]
                     </div>
                     <div class="card-body">
-                        <h5>[[ vkata.kataki ]]</h5>
-                        <p><i>Rendo: [[ vkata.rendo ]]</i></p>
+                        <h5>[[ kata.kataki ]]</h5>
+                        <p><i>Rendo: [[ kata.rendo ]]</i></p>
                         <div class="input-group" style="margin-bottom: 10px;">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="waza1-addon">Waza1</span>
@@ -46,10 +46,10 @@
         <div v-show="!showshirengroup">
             <div class="row">
             <div class="col-7">
-                <div v-for="(kata, index) in vtekishu">
+                <div v-for="(kata, index) in tekishu">
                     <div class="card" style="margin:5px">
                         <div class="card-header">
-                            [[ kata.ryugi_na ]] ([[ index + 1 ]] / [[ vtekikazu ]])
+                            [[ kata.ryugi_na ]] ([[ index + 1 ]] / [[ tekikazu ]])
                         </div>
                         <div class="card-body">
                             <h5>[[ kata.kataki ]]</h5>
