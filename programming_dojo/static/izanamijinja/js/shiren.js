@@ -37,6 +37,10 @@ new Vue({
         isBlank: function(str) {
             return str.length > 0;
         },
+        showmigaki: function(migaki) {
+            if (migaki > 0) return '(+1)';
+            return '';
+        },
         zan: function() {
             if (this.kazu >= this.tekikazu - 1) {
                 console.log('Zanshin');
@@ -64,7 +68,12 @@ new Vue({
                 }
             }
             console.log('shippai_lst:', this.kata.shippai_lst);
-            if (this.kata.shippai_lst.length == 0) ++this.seikousu;
+            if (this.kata.shippai_lst.length == 0) {
+                shin_rendo = Math.min(this.kata.rendo + 1, 2);
+                this.kata.migaki = shin_rendo - this.kata.rendo;
+                this.kata.rendo = shin_rendo;
+                ++this.seikousu;
+            }
             if (this.kazu >= this.tekikazu - 2) {
                 this.zanbtnlabel = 'Zanshin';
                 this.zanbtnclass = 'btn btn-success';
