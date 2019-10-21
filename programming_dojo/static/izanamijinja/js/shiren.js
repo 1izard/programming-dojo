@@ -2,12 +2,14 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 
 let shiren_obj = JSON.parse(document.getElementById('shiren_obj').textContent);
+console.log('shiren_obj:', shiren_obj);
 
 new Vue({
     el: '#shiren',
     delimiters: ['[[', ']]'],
     data: {
         kazu: 0,
+        seikousu: 0,
         tekishu: shiren_obj.tekishu,
         tekikazu: shiren_obj.tekishu.length,
         kata: shiren_obj.tekishu[0],
@@ -54,17 +56,15 @@ new Vue({
             }
             let zan_lst = [this.zan1.trim(), this.zan2.trim(), this.zan3.trim()];
             let waza_lst = [this.kata.waza1.trim(), this.kata.waza2.trim(), this.kata.waza3.trim()];
-            console.log('zan_set:', zan_lst);
-            console.log('waza_set:', waza_lst);
-            let seikou = true;
-            for (let zan of zan_lst) {
-                if (!waza_lst.includes(zan)) {
-                    seikou = false;
-                    break;
+            console.log('zan_lst:', zan_lst);
+            console.log('waza_lst:', waza_lst);
+            for (let waza of waza_lst) {
+                if (!zan_lst.includes(waza)) {
+                    this.kata.shippai_lst.push(waza);
                 }
             }
-            console.log('seikou:', seikou);
-            this.kata.seikou = seikou;
+            console.log('shippai_lst:', this.kata.shippai_lst);
+            if (this.kata.shippai_lst.length == 0) ++this.seikousu;
             if (this.kazu >= this.tekikazu - 2) {
                 this.zanbtnlabel = 'Zanshin';
                 this.zanbtnclass = 'btn btn-success';
