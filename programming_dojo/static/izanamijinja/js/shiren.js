@@ -8,17 +8,19 @@ let kata = tekishu[kazu];
 let wazas = [kata.waza1, kata.waza2, kata.waza3]
 
 new Vue({
-    el: '#shirenform',
+    el: '#shiren',
     delimiters: ['[[', ']]'],
     data: {
         vkazu: kazu + 1,
+        vtekishu: tekishu,
         vtekikazu: tekikazu,
         vkata: kata,
         zan1: '',
         zan2: '',
         zan3: '',
         zanbtnlabel: 'Zan',
-        zanbtnclassname: 'btn btn-info'
+        zanbtnclassname: 'btn btn-info',
+        showshirengroup: true,
     },
     computed: {
         zanbtnclass: {
@@ -37,6 +39,8 @@ new Vue({
         zan: function() {
             if (kazu >= tekikazu - 1) {
                 console.log('Zanshin');
+                console.log('tekishu', tekishu);
+                this.showshirengroup = false;
                 return;
             }
             let zan_lst = [this.zan1.trim(), this.zan2.trim(), this.zan3.trim()];
@@ -56,7 +60,7 @@ new Vue({
                 this.zanbtnlabel = 'Zanshin';
                 this.zanbtnclass = 'btn btn-success';
             }
-            
+
             this.zan1 = '';
             this.zan2 = '';
             this.zan3 = '';
@@ -65,30 +69,4 @@ new Vue({
             kata = tekishu[kazu];
         }
     }
-})
-
-// new Vue({
-//     el: '#shirenform',
-//     data: {
-//         ryugi_na: kata.ryugi_na,
-//         kataki: kata.kataki,
-//         waza1: '',
-//         waza2: '',
-//         waza3: '',
-//         rendo: kata.rendo
-//     },
-//     methods: {
-//         zan: () => {
-//             let zan_set = new Set(this.waza1.trim(), this.waza2.trim(), this.waza3.trim());
-//             let waza_set = new Set(kata.waza1.trim(), kata.waza2.trim(), kata.waza3.trim());
-//             let seikou = true;
-//             for (let zan of zan_set) {
-//                 if (!waza_set.has(zan)) {
-//                     seikou = false;
-//                     break;
-//                 }
-//             }
-//             kata.seikou = seikou;
-//         }
-//     }
-// })
+});
