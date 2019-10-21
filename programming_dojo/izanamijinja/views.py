@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import generic
+from django.http import HttpResponse
 from pprint import pprint
 import json
 import random
@@ -89,6 +90,7 @@ def shiren(request):
             'tekishu': [{
                 'ryugi_id': kata.ryugi.id,
                 'ryugi_na': kata.ryugi.na,
+                'kata_id': kata.id,
                 'kataki': kata.kataki,
                 'waza1': kata.waza1,
                 'waza2': kata.waza2,
@@ -102,6 +104,11 @@ def shiren(request):
 
 
 def zanshin(request):
-    context = {}
-    return render(request, 'izanamijinja/zanshin.html', context)
+    print('### izanamijinja.views.zanshin ###')
+    shiren_dct = json.loads(request.body)
+    pprint(shiren_dct)
+    for kata in shiren_dct['tekishu']:
+        Kata.objects.filter(pk=kata['kata_id']).update(rendo=kata['rendo'])
+    print('######')
+    return HttpResponse('success from izanamijinja.views.zanshin')
 

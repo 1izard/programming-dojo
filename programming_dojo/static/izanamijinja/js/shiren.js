@@ -1,3 +1,6 @@
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+
 let shiren_obj = JSON.parse(document.getElementById('shiren_obj').textContent);
 
 new Vue({
@@ -36,6 +39,16 @@ new Vue({
             if (this.kazu >= this.tekikazu - 1) {
                 console.log('Zanshin');
                 console.log('tekishu', this.tekishu);
+
+                axios.post(zanshin_url, {
+                    'tekishu': this.tekishu,
+                })
+                .then(function(response) {
+                    console.log('response', response);
+                })
+                .then(function(error) {
+                    console.log('error', error);
+                });
                 this.showshirengroup = false;
                 return;
             }

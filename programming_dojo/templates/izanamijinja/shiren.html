@@ -4,6 +4,9 @@
 
 {% block content %}
 {{ shiren_dct|json_script:"shiren_obj" }}
+<script>
+    var zanshin_url = "{% url 'izanamijinja:zanshin' %}"
+</script>
 <div id="shiren">
     <div v-show="showshirengroup">
         <h1>Shiren ([[ kazu + 1 ]]/[[ tekikazu ]])</h1>
