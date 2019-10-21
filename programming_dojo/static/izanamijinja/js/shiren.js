@@ -4,6 +4,8 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 let shiren_obj = JSON.parse(document.getElementById('shiren_obj').textContent);
 console.log('shiren_obj:', shiren_obj);
 
+let rendo_arr = ['Mijuku', 'Nami', 'Jukuren'];
+
 new Vue({
     el: '#shiren',
     delimiters: ['[[', ']]'],
@@ -36,6 +38,9 @@ new Vue({
     methods: {
         isBlank: function(str) {
             return str.length > 0;
+        },
+        showrendo: function(rendo) {
+            return rendo_arr[parseInt(rendo)]
         },
         showmigaki: function(migaki) {
             if (migaki > 0) return '(+1)';

@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body">
                         <h5>[[ kata.kataki ]]</h5>
-                        <p><i>Rendo: [[ kata.rendo ]]</i></p>
+                        <p><i>Rendo: [[ showrendo(kata.rendo) ]]</i></p>
                         <div v-show="isBlank(kata.waza1)" class="input-group" style="margin-bottom: 10px;">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="waza1-addon">Waza1</span>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="card-body">
                             <h5>[[ kata.kataki ]]</h5>
-                            <p><i>Rendo: [[ kata.rendo ]] [[ showmigaki(kata.migaki) ]]</i></p>
+                            <p><i>Rendo: [[ showrendo(kata.rendo) ]] [[ showmigaki(kata.migaki) ]]</i></p>
                         </div>
                     </div>
                 </div>
