@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import generic
+from django.http import HttpResponse
 from pprint import pprint
 import json
 import random
@@ -60,7 +61,7 @@ class KataAratameView(generic.UpdateView):
 
 def zenshin(request):
     context = {
-        'ryugi_lst': Ryugi.objects.all()
+        'ryugi_lst': Ryugi.objects.all(),
     }
     return render(request, 'izanamijinja/zenshin.html', context)
 
@@ -70,28 +71,56 @@ def shiren(request):
 
     ryugi_id = int(request.POST.get('ryugi_id'))
     tekikazu = int(request.POST.get('tekikazu'))
+    rendo_lst = request.POST.getlist('rendo')
     
     print('ryugi_id:', ryugi_id)
     print('tekikazu:', tekikazu)
+    print('rendo_lst:', rendo_lst)
 
     if ryugi_id == -1:
-        tekishu = list(Kata.objects.all())
+        tekishu = Kata.objects.all()
     else:
-        tekishu = list(Ryugi.objects.get(pk=ryugi_id).katas.all())
+        tekishu = Ryugi.objects.get(pk=ryugi_id).katas.all()
+    
+    if '-1' in rendo_lst:
+        pass
+    else:
+        tekishu = tekishu.filter(rendo__in=rendo_lst)
+
+    tekishu = list(tekishu)
+
     random.shuffle(tekishu)
     tekishu = tekishu[:min(len(tekishu), tekikazu)]
 
+    print('tekishu', tekishu)
     print('#' * 30)
 
     context = {
-        'tekishu_dct': {
-            'tekishu': ['tekishu']
+        'shiren_dct': {
+            'tekishu': [{
+                'ryugi_id': kata.ryugi.id,
+                'ryugi_na': kata.ryugi.na,
+                'kata_id': kata.id,
+                'kataki': kata.kataki,
+                'waza1': kata.waza1,
+                'waza2': kata.waza2,
+                'waza3': kata.waza3,
+                'rendo': kata.rendo,
+                'migaki': 0,
+                'zan_lst': [],
+                'shippai_lst': [],
+            } for kata in tekishu]
         }
     }
     return render(request, 'izanamijinja/shiren.html', context)
 
 
 def zanshin(request):
-    context = {}
-    return render(request, 'izanamijinja/zanshin.html', context)
+    print('### izanamijinja.views.zanshin ###')
+    shiren_dct = json.loads(request.body)
+    pprint(shiren_dct)
+    for kata in shiren_dct['tekishu']:
+        Kata.objects.filter(pk=kata['kata_id']).update(rendo=kata['rendo'])
+    print('######')
+    return HttpResponse('success from izanamijinja.views.zanshin')
 
