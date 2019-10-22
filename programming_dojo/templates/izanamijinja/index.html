@@ -15,23 +15,23 @@
                     <h5 class="card-header">{{ kata.ryugi }}</h5>
                     <div class="card-body">
                         <p>{{ kata.kataki }}</p>
-                        <div v-show="getShow('{{ forloop.counter0 }}')">
+                        <div v-show="getShow('{{ forloop.counter0 }}')" style="margin-bottom: 20px;">
                             <p><i>Rendo: {{ kata.get_rendo_display }}</i></p>
-                            <div v-show="isBlank('{{ kata.waza1 }}')" class="input-group">
+                            <div v-show="isBlank('{{ kata.waza1 }}')" class="input-group" style="margin-bottom: 3px;">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="waza1-addon">Waza1</span>
                                 </div>
                                 <input disabled value="{{ kata.waza1 }}" type="text" class="form-control"
                                     aria-label="Waza1" aria-labelledby="waza1-addon">
                             </div>
-                            <div v-show="isBlank('{{ kata.waza2 }}')" class="input-group">
+                            <div v-show="isBlank('{{ kata.waza2 }}')" class="input-group" style="margin-bottom: 3px;">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="waza2-addon">Waza2</span>
                                 </div>
                                 <input disabled value="{{ kata.waza2 }}" type="text" class="form-control"
                                     aria-label="Waza2" aria-labelledby="waza2-addon">
                             </div>
-                            <div v-show="isBlank('{{ kata.waza3 }}')" class="input-group">
+                            <div v-show="isBlank('{{ kata.waza3 }}')" class="input-group" style="margin-bottom: 3px;">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="waza3-addon">Waza3</span>
                                 </div>
