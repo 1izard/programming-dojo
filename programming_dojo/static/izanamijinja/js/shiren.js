@@ -39,6 +39,9 @@ new Vue({
         isBlank: function(str) {
             return str.length > 0;
         },
+        isShippai: function(shippai_lst, waza) {
+            return shippai_lst.includes(waza);
+        },
         showrendo: function(rendo) {
             return rendo_arr[parseInt(rendo)]
         },
@@ -54,12 +57,12 @@ new Vue({
             return common_str +'background-color:#b9dca4;'
         },
         zan: function() {
-            let zan_lst = [this.zan1.trim(), this.zan2.trim(), this.zan3.trim()];
+            this.kata.zan_lst = [this.zan1.trim(), this.zan2.trim(), this.zan3.trim()];
             let waza_lst = [this.kata.waza1.trim(), this.kata.waza2.trim(), this.kata.waza3.trim()];
-            console.log('zan_lst:', zan_lst);
+            console.log('zan_lst:', this.kata.zan_lst);
             console.log('waza_lst:', waza_lst);
             for (let waza of waza_lst) {
-                if (!zan_lst.includes(waza)) {
+                if (!this.kata.zan_lst.includes(waza)) {
                     this.kata.shippai_lst.push(waza);
                 }
             }

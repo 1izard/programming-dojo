@@ -97,6 +97,7 @@ def shiren(request):
                 'waza3': kata.waza3,
                 'rendo': kata.rendo,
                 'migaki': 0,
+                'zan_lst': [],
                 'shippai_lst': [],
             } for kata in tekishu]
         }

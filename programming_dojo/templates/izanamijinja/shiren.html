@@ -46,24 +46,141 @@
             </div>
         </div>
     </div>
-        <div v-show="!showshirengroup">
-            <h2>Zanshin -残心- (Seikou [[ seikousu ]]/[[ tekikazu ]])</h1>
+    <div v-show="!showshirengroup">
+        <h2>Zanshin -残心- (Seikou [[ seikousu ]]/[[ tekikazu ]])</h1>
             <div class="row">
-            <div class="col-7">
-                <div v-for="(kata, index) in tekishu">
-                    <div class="card" :style="zanshincardstyle(kata.shippai_lst)">
-                        <div class="card-header">
-                            [[ kata.ryugi_na ]] ([[ index + 1 ]] / [[ tekikazu ]])
-                        </div>
-                        <div class="card-body">
-                            <h5>[[ kata.kataki ]]</h5>
-                            <p><i>Rendo: [[ showrendo(kata.rendo) ]] [[ showmigaki(kata.migaki) ]]</i></p>
+                <div class="col-10">
+                    <div v-for="(kata, index) in tekishu">
+                        <div class="card" :style="zanshincardstyle(kata.shippai_lst)">
+                            <div class="card-header">
+                                [[ kata.ryugi_na ]] ([[ index + 1 ]] / [[ tekikazu ]])
+                            </div>
+                            <div class="card-body">
+                                <h5>[[ kata.kataki ]]</h5>
+                                <p><i>Rendo: [[ showrendo(kata.rendo) ]] [[ showmigaki(kata.migaki) ]]</i></p>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <table class="table table-sm table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">Kata</th>
+                                                </tr>
+                                                </thread>
+                                            <tbody>
+                                                <tr>
+                                                    <td width="53">
+                                                        <div v-show="isShippai(kata.shippai_lst, kata.waza1)">
+                                                            <svg height="32" class="octicon octicon-flame"
+                                                                viewBox="0 0 12 16" version="1.1" width="24"
+                                                                aria-hidden="true">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                        <div v-show="!isShippai(kata.shippai_lst, kata.waza1)"
+                                                            width="53"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div v-show="isBlank(kata.waza1)" class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"
+                                                                    id="kata-waza1-addon">Waza1</span>
+                                                            </div>
+                                                            <input disabled v-model="kata.waza1" type="text"
+                                                                class="form-control" aria-label="Waza1"
+                                                                aria-describedby="kata-waza1-addon">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="53">
+                                                        <div v-show="isShippai(kata.shippai_lst, kata.waza2)">
+                                                            <svg height="32" class="octicon octicon-flame"
+                                                                viewBox="0 0 12 16" version="1.1" width="24"
+                                                                aria-hidden="true">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                        <div v-show="!isShippai(kata.shippai_lst, kata.waza2)"
+                                                            width="53"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div v-show="isBlank(kata.waza2)" class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"
+                                                                    id="kata-waza2-addon">Waza2</span>
+                                                            </div>
+                                                            <input disabled v-model="kata.waza2" type="text"
+                                                                class="form-control" aria-label="Waza2"
+                                                                aria-describedby="kata-waza2-addon">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="53">
+                                                        <div v-show="isShippai(kata.shippai_lst, kata.waza3)">
+                                                            <svg height="32" class="octicon octicon-flame"
+                                                                viewBox="0 0 12 16" version="1.1" width="24"
+                                                                aria-hidden="true">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                        <div v-show="!isShippai(kata.shippai_lst, kata.waza3)"
+                                                            width="53"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div v-show="isBlank(kata.waza3)" class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"
+                                                                    id="kata-waza3-addon">Waza3</span>
+                                                            </div>
+                                                            <input disabled v-model="kata.waza3" type="text"
+                                                                class="form-control" aria-label="Waza3"
+                                                                aria-describedby="kata-waza3-addon">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <table>
+                                            <thead>
+                                                <th scope="col" height="32">Zan</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(zan_waza, index) in kata.zan_lst">
+                                                    <td>
+                                                        <div v-show="isBlank(zan_waza)" class="input-group"
+                                                            style="margin-top:3px; margin-bottom:3px;">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"
+                                                                    id="'zan-waza' + index + '-addon'">Waza[[ index
+                                                                    + 1 ]]</span>
+                                                            </div>
+                                                            <input disabled v-bind:value="zan_waza" type="text"
+                                                                class="form-control" aria-label="'Waza' + index"
+                                                                aria-describedby="'zan-waza' + index + '-addon'">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </div>
+    </div>
 </div>
 <script src="{% static 'izanamijinja/js/shiren.js' %}"></script>
 {% endblock %}
