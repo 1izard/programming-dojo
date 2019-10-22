@@ -8,24 +8,28 @@ Train and train your programming skills...
 # Izanami Jinja
 
 ## Sanpai -参拝-
-Exec `python manage.py runserver` and access `http://localhost:8000/izanamijinja/`.
+Exec 
+- `python manage.py makemigrations`
+- `python manage.py migrate`
+- `python manage.py runserver`
+and access `http://localhost:8000/izanamijinja/`.  
 Once you step in, you can never go out until master programming skills...
 
 ![seimon](images/seimon.png)
 
 ## Soushi -創始-
-"Soushi" is to create "Ryugi -流儀-".
-Ryugi is school of programming skill; i.e. Linux Command, C, Python, etc...
+"Soushi" is to create "Ryugi -流儀-".  
+Ryugi is school of programming skill; i.e. Linux Command, C, Python, etc...  
 
 ## Seikei -成形-
-> *"Kata -形- " -The movement inherited from ancient times on "Budo"-*
+> *"Kata -形- " -The movement inherited from ancient times on "Budo"-*  
 
-Kata is form to strike a typiccal enemy beatifully and sharply, so A Kata corresponds with a "Kataki -敵-"
-A Kata has these properties.
-Each seikei belongs to A Ryugi and can have up to three Wazas.
-The level is called as "Rendo -錬度-".
-Rendo increment with success of Kata.
-Brush up your Rend and strike Kataki by "Waza -技-".
+Kata is form to strike a typiccal enemy beatifully and sharply, so A Kata corresponds with a "Kataki -敵-"  
+A Kata has these properties.  
+Each seikei belongs to A Ryugi and can have up to three Wazas.  
+The level is called as "Rendo -錬度-".  
+Rendo increment with success of Kata.  
+Brush up your Rend and strike Kataki by "Waza -技-".  
 
 |Properties|Description|
 |:--:|:--:|
@@ -36,7 +40,7 @@ Brush up your Rend and strike Kataki by "Waza -技-".
 |Waza3 -技3-||
 |Rendo -錬度-|Mijuku -未熟- < Bon -凡- < Jukuren -熟練-|
 
-e.g.
+e.g.  
 
 |Properties|Description|
 |:--:|:--:|
@@ -47,22 +51,22 @@ e.g.
 |Waza3 -技3-||
 |Rendo -錬度-|Bon|
 
-![seikei.png](images/seikei.png)
+![seikei.png](images/seikei.png)  
 
 ## Shiren
-"Shiren" consists of three section, "Zenshin -前心-", Shiren itself, and "Zanshin -残心-".
+"Shiren" consists of three section, "Zenshin -前心-", Shiren itself, and "Zanshin -残心-".  
   
 ### Zenshin -前心-
-Preparing for the shiren; i.e. to configure Ryugi, "Tekikazu -敵数-" (meaning num of Kataki), and Rendo.
+Preparing for the shiren; i.e. to configure Ryugi, "Tekikazu -敵数-" (meaning num of Kataki), and Rendo.  
 
 ### Shiren -試練-
-Strike the Kataki; i.e. type Wazas to match Kataki.
+Strike the Kataki; i.e. type Wazas to match Kataki.  
 
 ### Zanshin -残心-
-Keep the spirit; i.e. review your result of Shiren.
+Keep the spirit; i.e. review your result of Shiren.  
 
-![zanshin](images/zanshin.png)
+![zanshin](images/zanshin.png)  
 
 <br>
 
-When getting over all Shiren and mastering all Katas, everyone will call you, *"Tatsujin -達人-"*
+When getting over all Shiren and mastering all Katas, everyone will call you, *"Tatsujin -達人-"*  
