@@ -62,6 +62,8 @@ Preparing for the shiren; i.e. to configure Ryugi, "Tekikazu -敵数-" (meaning 
 ### Shiren -試練-
 Strike the Kataki; i.e. type Wazas to match Kataki.  
 
+![shiren](images/shiren.png)
+
 ### Zanshin -残心-
 Keep the spirit; i.e. review your result of Shiren.  
 
