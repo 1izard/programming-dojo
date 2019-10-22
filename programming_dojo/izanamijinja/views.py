@@ -61,7 +61,7 @@ class KataAratameView(generic.UpdateView):
 
 def zenshin(request):
     context = {
-        'ryugi_lst': Ryugi.objects.all()
+        'ryugi_lst': Ryugi.objects.all(),
     }
     return render(request, 'izanamijinja/zenshin.html', context)
 
@@ -71,14 +71,24 @@ def shiren(request):
 
     ryugi_id = int(request.POST.get('ryugi_id'))
     tekikazu = int(request.POST.get('tekikazu'))
+    rendo_lst = request.POST.getlist('rendo')
     
     print('ryugi_id:', ryugi_id)
     print('tekikazu:', tekikazu)
+    print('rendo_lst:', rendo_lst)
 
     if ryugi_id == -1:
-        tekishu = list(Kata.objects.all())
+        tekishu = Kata.objects.all()
     else:
-        tekishu = list(Ryugi.objects.get(pk=ryugi_id).katas.all())
+        tekishu = Ryugi.objects.get(pk=ryugi_id).katas.all()
+    
+    if '-1' in rendo_lst:
+        pass
+    else:
+        tekishu = tekishu.filter(rendo__in=rendo_lst)
+
+    tekishu = list(tekishu)
+
     random.shuffle(tekishu)
     tekishu = tekishu[:min(len(tekishu), tekikazu)]
 

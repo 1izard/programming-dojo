@@ -4,7 +4,7 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 let shiren_obj = JSON.parse(document.getElementById('shiren_obj').textContent);
 console.log('shiren_obj:', shiren_obj);
 
-let rendo_arr = ['Mijuku', 'Nami', 'Jukuren'];
+let rendo_arr = ['Mijuku', 'Bon', 'Jukuren'];
 
 new Vue({
     el: '#shiren',

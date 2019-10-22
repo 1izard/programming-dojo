@@ -18,7 +18,7 @@ class Kata(models.Model):
     waza3 = models.CharField(max_length=40, blank=True)
     rendo = models.CharField(
         max_length=1,
-        choices=[('0', 'Mijuku'), ('1', 'Nami'), ('2', 'Jukuren')],
+        choices=[('0', 'Mijuku'), ('1', 'Bon'), ('2', 'Jukuren')],
         default='0'
     )
 
