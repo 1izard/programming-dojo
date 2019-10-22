@@ -1,0 +1,33 @@
+{% extends 'izanamijinja/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>
+    {% if object %}
+    Aratame
+    {% else %}
+    Seikei
+    {% endif %}
+</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-4">
+        {{ form.ryugi|as_crispy_field }}
+        </div>
+    </div>
+    {{ form.kataki|as_crispy_field }}
+    {{ form.waza1|as_crispy_field }}
+    {{ form.waza2|as_crispy_field }}
+    {{ form.waza3|as_crispy_field }}
+    <button type="submit" class="btn btn-success">
+    {% if object %}
+    Aratame
+    {% else %}
+    Seikei
+    {% endif %}
+    </button>
+</form>
+{% endblock %}
