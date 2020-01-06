@@ -8,6 +8,10 @@ Train and train your programming skills...
 # Izanami Jinja
 
 ## Sanpai -参拝-
+Prerequisites
+- django
+- django-crispy-forms
+
 Exec 
 - `python manage.py makemigrations`
 - `python manage.py migrate`
@@ -24,7 +28,7 @@ Ryugi is school of programming skill; i.e. Linux Command, C, Python, etc...
 ## Seikei -成形-
 > *"Kata -形- " -The movement inherited from ancient times on "Budo"-*  
 
-Kata is form to strike a typiccal enemy beatifully and sharply, so A Kata corresponds with a "Kataki -敵-"  
+Kata is form to strike a typical enemy beatifully and sharply, so A Kata corresponds with a "Kataki -敵-"  
 A Kata has these properties.  
 Each seikei belongs to A Ryugi and can have up to three Wazas.  
 The level is called as "Rendo -錬度-".  
